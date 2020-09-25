@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Card from '../components/Card';
 import './App.css';
+import players from '../players.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      players: players,
+    }
+  };
+
+  render() {
+    const { players } = this.state;
+    return !players.length ?
+    <h1>Loading...</h1> :
+    (
+      <div class="tc">
+        <h1>NHL ALL STARS</h1>
+        <h4>All-time players who achieved 1000+ NHL career points.</h4>
+        <Card players={players}/>
+      </div>
+    )
+  }
 }
 
 export default App;
