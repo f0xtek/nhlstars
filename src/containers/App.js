@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from '../components/Card';
+import CardList from '../components/CardList';
 import './App.css';
 import players from '../players.js';
 
@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      players: players,
+      players: players.data,
     }
   };
 
@@ -16,10 +16,9 @@ class App extends Component {
     return !players.length ?
     <h1>Loading...</h1> :
     (
-      <div class="tc">
-        <h1>NHL ALL STARS</h1>
-        <h4>All-time players who achieved 1000+ NHL career points.</h4>
-        <Card players={players}/>
+      <div className="tc">
+        <h1 className="f-subheadline tracked near-black">NHL ALL STARS</h1>
+        <CardList players={players}/>
       </div>
     )
   }
